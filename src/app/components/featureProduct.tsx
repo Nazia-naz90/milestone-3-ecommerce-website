@@ -1,74 +1,20 @@
 import Image from "next/image";
-import ProductCard from "@/app/components/productCard";
-import { Product } from "@/app/components/productCard";
+import ProductCard, { Product } from "@/app/components/productCard";
+// import { Product } from "@/app/components/productCard";
+import { client } from "@/sanity/lib/client";
+import { groq } from "next-sanity";
 
-const FeatureProduct: React.FC = () => {
-  const products: Product[] = [
-    {
-      image: "/images/product-cover-5.png.jpg",
-      name: "Graphic Design",
-      department: "English Department",
-      originalPrice: "$16.48",
-      discountPrice: "$6.48",
-      colors: ["bg-[#23A6F0]", "bg-[#23856D]", "bg-[#E77C40]", "bg-[#252B42]"],
-    },
-    {
-      image: "/images/product-cover-5 (1).png.jpg",
-      name: "Graphic Design",
-      department: "English Department",
-      originalPrice: "$16.48",
-      discountPrice: "$6.48",
-      colors: ["bg-[#23A6F0]", "bg-[#23856D]", "bg-[#E77C40]", "bg-[#252B42]"],
-    },
-    {
-      image: "/images/product-cover-5 (2).png.jpg",
-      name: "Graphic Design",
-      department: "English Department",
-      originalPrice: "$16.48",
-      discountPrice: "$6.48",
-      colors: ["bg-[#23A6F0]", "bg-[#23856D]", "bg-[#E77C40]", "bg-[#252B42]"],
-    },
-    {
-      image: "/images/product-cover-5 (3).png.jpg",
-      name: "Graphic Design",
-      department: "English Department",
-      originalPrice: "$16.48",
-      discountPrice: "$6.48",
-      colors: ["bg-[#23A6F0]", "bg-[#23856D]", "bg-[#E77C40]", "bg-[#252B42]"],
-    },
-    {
-      image: "/images/productcard-5.png",
-      name: "Graphic Design",
-      department: "English Department",
-      originalPrice: "$16.48",
-      discountPrice: "$6.48",
-      colors: ["bg-[#23A6F0]", "bg-[#23856D]", "bg-[#E77C40]", "bg-[#252B42]"],
-    },
-    {
-      image: "/images/productCard-6.png",
-      name: "Graphic Design",
-      department: "English Department",
-      originalPrice: "$16.48",
-      discountPrice: "$6.48",
-      colors: ["bg-[#23A6F0]", "bg-[#23856D]", "bg-[#E77C40]", "bg-[#252B42]"],
-    },
-    {
-      image: "/images/productcard-7.png",
-      name: "Graphic Design",
-      department: "English Department",
-      originalPrice: "$16.48",
-      discountPrice: "$6.48",
-      colors: ["bg-[#23A6F0]", "bg-[#23856D]", "bg-[#E77C40]", "bg-[#252B42]"],
-    },
-    {
-      image: "/images/productcard-8.png",
-      name: "Graphic Design",
-      department: "English Department",
-      originalPrice: "$16.48",
-      discountPrice: "$6.48",
-      colors: ["bg-[#23A6F0]", "bg-[#23856D]", "bg-[#E77C40]", "bg-[#252B42]"],
-    },
-  ];
+
+export default async function FeatureProduct ()  {
+
+  const products = await client.fetch(groq `*[_type=="product"]`)
+  console.log(products)
+
+  const query =
+  `*[_type=="product"] | order(_createAt asc){
+ name,title,image,
+   "slug":slug.current}`
+
   return (
     <>
       <div className="flex flex-col items-center justify-center text-center mt-28 mb-7 overflow-x-hidden">
@@ -83,11 +29,13 @@ const FeatureProduct: React.FC = () => {
         </div>
         {/* GRID OF PRODUCT CART */}
         <div className="grid grid.cols-1 sm:grid-cols-2  md:grid-cols-4 gap-1 mt-6 w-full">
-          {products.map((product, index) => (
-            <ProductCard key={index} product={product} />
-          ))}
+        {
+    products.map((product:Product)=>(
+     <ProductCard product={product} key={product.slug}/> 
+    ))
+  }
         </div>
-
+          {/* VITA CLASSIC SECTION */}
         <div className="bg-[#23856D] sm:h-[990px] md:h-[713px] w-full mt-16 pt-7 flex items-center justify-between flex-col md:flex-row">
           {/* TEXT PORTION */}
           <div className="text-white space-y-4 ml-4 sm:ml-12 md:ml-36 text-center sm:text-left">
@@ -184,4 +132,4 @@ const FeatureProduct: React.FC = () => {
   );
 };
 
-export default FeatureProduct;
+

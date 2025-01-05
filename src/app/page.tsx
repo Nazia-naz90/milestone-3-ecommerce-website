@@ -1,19 +1,20 @@
 import Hero from "./components/hero";
 import Editors from "./components/editorPick";
-import FeatureProduct from "./components/featureProduct";
 import FeaturedPost from "./components/featuredPost";
 import Header from "./components/navbar";
 import Footer from "./components/footerFirst";
+// import FeatureProduct from "./components/featureProduct";
 
 
+export default async function Home() {
 
-export default function Home() {
+
   return (
     <div>
      <Header/>
      <Hero/>
      <Editors/>
-     <FeatureProduct/>
+     {/* <FeatureProduct/>  */}
      <FeaturedPost/>
      <Footer/>
     </div>
