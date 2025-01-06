@@ -6,9 +6,9 @@ const Hero = () => {
      bg-center  
      sm:bg-[top_center]
      lg:bg-center
-     h-[400px] sm:h-[600px] lg:h-[716px]">
+     h-[400px] sm:h-[600px] lg:h-[716px] ">
       {/* Overlay */}
-      <div className="absolute inset-0 "></div>
+      <div className="absolute inset-0 "></div >
 
       {/* Text Content */}
       <div className="absolute top-1/2 transform -translate-x-1/2 -translate-y-1/2 left-1/2 lg:left-24 lg:top-40 lg:transform-none lg:text-left text-center text-white px-4">

@@ -11,9 +11,17 @@ export default async function FeatureProduct ()  {
   console.log(products)
 
   const query =
-  `*[_type=="product"] | order(_createAt asc){
- name,title,image,
-   "slug":slug.current}`
+  `*[_type=="product"]
+{"imageUrl":image.asset->url,title,
+  department,originalPrice,
+  discountPrice,colors,description,
+  lDress->{button,
+  "heartIconUrl": heartIcon.asset->url, 
+  "cartIconUrl": cartIcon.asset->url, 
+    "eyeIconUrl": eyeIcon.asset->url}}[0]`
+//   `*[_type=="product"] | order(_createAt asc){
+//  name,title,image,
+//    "slug":slug.current}`
 
   return (
     <>
