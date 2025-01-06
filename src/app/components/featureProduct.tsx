@@ -1,5 +1,5 @@
 import Image from "next/image";
-import ProductCard, { Product } from "@/app/components/productCard";
+import ProductCard, { product } from "@/app/components/productCard";
 // import { Product } from "@/app/components/productCard";
 import { client } from "@/sanity/lib/client";
 import { groq } from "next-sanity";
@@ -8,20 +8,22 @@ import { groq } from "next-sanity";
 export default async function FeatureProduct ()  {
 
   const products = await client.fetch(groq `*[_type=="product"]`)
-  console.log(products)
+  // console.log(products)
 
-  const query =
-  `*[_type=="product"]
-{"imageUrl":image.asset->url,title,
-  department,originalPrice,
-  discountPrice,colors,description,
-  lDress->{button,
-  "heartIconUrl": heartIcon.asset->url, 
-  "cartIconUrl": cartIcon.asset->url, 
-    "eyeIconUrl": eyeIcon.asset->url}}[0]`
-//   `*[_type=="product"] | order(_createAt asc){
-//  name,title,image,
-//    "slug":slug.current}`
+//   const query =
+//   `*[_type=="product"]
+// {"imageUrl":image.asset->url,title,
+//   department,originalPrice,
+//   discountPrice,colors,description,
+//   lDress->{button,
+//   "heartIconUrl": heartIcon.asset->url, 
+//   "cartIconUrl": cartIcon.asset->url, 
+//     "eyeIconUrl": eyeIcon.asset->url}}[0]`
+
+// const groq= `*[_type=="product"] | order(_createAt asc){
+//  "imageUrl":image.asset->url,title,department,originalPrice,
+//   discountPrice,colors,description
+//   "slug":slug.current}`
 
   return (
     <>
