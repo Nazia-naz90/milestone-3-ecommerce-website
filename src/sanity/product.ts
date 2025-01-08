@@ -46,12 +46,6 @@ export const product = defineType({
        type: 'array', 
        of: [{ type: 'string' }], 
       }),
-      defineField({
-      name: 'slug',
-      type: 'slug',
-      title: 'Slug',
-      options: { source: 'title', maxLength: 96, },
-      }),
         defineField({ name: 'lDress',
            title: 'Ladies Dress', 
            type: 'reference', 

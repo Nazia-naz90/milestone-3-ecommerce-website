@@ -1,6 +1,7 @@
 import Image from 'next/image';
+import { urlForImage } from '@/sanity/lib/image';
 
-interface Product {
+ interface Product {
   imageUrl: string;
   title: string;
   department: string;
@@ -10,7 +11,7 @@ interface Product {
   description: string;
 }
 
-interface ProductCardProps {
+export  interface ProductCardProps {
   product: Product;
 }
 
@@ -19,13 +20,15 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     <div className="flex flex-col items-center p-4 mt-6 rounded-lg transition-all transform hover:scale-105 hover:shadow-lg">
       <div>
         {/* FEATURED IMAGE */}
-        <Image
-          src={product.imageUrl}
-          width={500}
-          height={500}
-          alt={product.title}
-          className="rounded"
-        />
+         
+                <Image
+                  src={product.imageUrl}
+                  width={500}
+                  height={500}
+                  alt={product.title}
+                  className="rounded"
+                />
+            
       </div>
       <div className="mt-4 text-center">
         <h3 className="text-[#252B42] text-[16px] font-bold">
@@ -183,7 +186,7 @@ export default ProductCard;
 //         </p>
 //         <div className="flex justify-center gap-2 mt-4">
 //         {product.colors.map((color,index)=>(
-//             <div key={index} className={`w-4 h-4 ${color} rounded-full`}/>
+//        <div key={index} className={`w-4 h-4 ${color} rounded-full`}/>
 //         ))}
 //         </div>
 
