@@ -48,6 +48,10 @@ export default async function Page({ params }:{
           className="rounded"
         />
       )}
+    {/* PRODUCT DESCRIPTION */}
+    <p className='text-blue-700 text-[16px] font-bold mt-2'>
+          {product.description}
+        </p>
 
       {/* PRODUCTS DETAIL */}
       {product.lDress && (

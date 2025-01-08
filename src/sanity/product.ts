@@ -30,32 +30,27 @@ export const product = defineType({
       type: 'string',
     }),
     defineField({
-      name: 'description',
-      title: 'Description',
-      type: 'string',
-    }),
-    defineField({
       name: 'discountPrice',
       title: 'Discount Price',
       type: 'string',
     }),
-    // defineField({
-    //   name: 'colors',
-    //   title: 'Colors',
-    //   type: 'array',
-    //   of: [{ type: 'string' }],
-    // }),
-    
-    // defineField({
-    //   name: 'lDress',
-    //   title: 'lDress',
-    //   type: 'reference',
-    //   to: [{ type: 'lDress' }],
-    // }),
+
+    defineField({
+      name: 'description',
+      title: 'Description',
+      type: 'string',
+    }),
+
     defineField({ name: 'colors',
        title: 'Colors', 
        type: 'array', 
        of: [{ type: 'string' }], 
+      }),
+      defineField({
+      name: 'slug',
+      type: 'slug',
+      title: 'Slug',
+      options: { source: 'title', maxLength: 96, },
       }),
         defineField({ name: 'lDress',
            title: 'Ladies Dress', 
