@@ -3,7 +3,7 @@ import { client } from "@/sanity/lib/client";
 import Header from "@/app/components/navbar";
 import Footer from "@/app/components/footerFirst";
 import { FaEye, FaHeart } from "react-icons/fa";
-import { FaCartShopping, FaEyeDropper } from "react-icons/fa6";
+import { FaCartShopping } from "react-icons/fa6";
 // import { urlForImage } from "@/sanity/lib/image";
 // import { urlForImage } from "@/sanity/lib/image";
 
@@ -56,7 +56,7 @@ export default async function Page({ params }:{
           width={400}
           height={400}
           alt="image"
-          className="rounded-lg  w-[350px] sm:w-[400px] md:w-[400px] 
+          className="rounded-lg  w-[350px] sm:w-[300px] md:w-[400px] 
           lg:w-[450px] h-auto  shadow-lg transition-all 
           transform hover:scale-105"
         />
@@ -66,7 +66,7 @@ export default async function Page({ params }:{
 
 {/* PRODUCT TITLE & DETAILS */}
 <div className="flex flex-col items-center justify-center w-[250px] 
-sm:w-[400px] lg:w-[450px] space-y-4 
+sm:w-[400px] lg:w-[450px] h-auto space-y-4 
   mx-auto">
 
   {/* PRODUCT TITLE */}
@@ -122,19 +122,19 @@ sm:w-[400px] lg:w-[450px] space-y-4
         {product.lDress.description}
       </p>
       <div className="flex items-center justify-center mx-auto space-x-4">
-        <button className="w-[180px] h-[50px]
+        <button className="w-[140px] h-[45px]
          border-transparent bg-blue-500 rounded-md">
           {product.lDress.button}
         </button>
         {product.lDress.heartIconUrl && (
-          <FaHeart className="text-rose-700 w-12 h-12"/>
+          <FaHeart className="text-rose-700 w-6 h-6"/>
           
         )}
         {product.lDress.cartIconUrl && (
-          <FaCartShopping className="text-blue-500 w-12 h-12"/>
+          <FaCartShopping className="text-blue-500 w-6 h-6"/>
         )}
         {product.lDress.eyeIconUrl && (
-          <FaEye className="text-blue-600 w-12 h-12"/>
+          <FaEye className="text-blue-600 w-6 h-6"/>
         )}
       </div>
     </section>

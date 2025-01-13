@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 
- interface Product {
+ export interface Product {
   imageUrl: string;
   name:string;
   department: string;

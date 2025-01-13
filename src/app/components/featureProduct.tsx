@@ -1,10 +1,12 @@
 import Image from "next/image";
 import ProductCard from "@/app/components/productCard";
-// import { Product } from "@/app/components/productCard";
+import type { Product } from "@/app/components/productCard";
 import { client } from "@/sanity/lib/client";
 import { groq } from "next-sanity";
 
 export default async function FeatureProduct() {
+
+  
   const products = await client.fetch(groq`*[_type=='product' ]{
     lDress->{ 
       "eyeIconUrl": eyeIcon.asset->url,
@@ -23,7 +25,7 @@ export default async function FeatureProduct() {
     name
 }
 `);
-  console.log(products)
+ // console.log(products)
 
   return (
     <>
@@ -41,7 +43,7 @@ export default async function FeatureProduct() {
         </div>
         {/* GRID OF PRODUCT CART */}
         <div className="grid grid.cols-1 sm:grid-cols-2  md:grid-cols-4 gap-1 mt-6 w-full">
-          {products.map((product:any) => (
+          {products.map((product:Product) => (
             <ProductCard product={product} key={product.id} />
           ))}
         </div>
