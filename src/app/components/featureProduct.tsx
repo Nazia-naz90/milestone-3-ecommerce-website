@@ -2,12 +2,11 @@ import Image from "next/image";
 import ProductCard from "@/app/components/productCard";
 import type { Product } from "@/app/components/productCard";
 import { client } from "@/sanity/lib/client";
-import { groq } from "next-sanity";
 
 export default async function FeatureProduct() {
 
   
-  const products = await client.fetch(groq`*[_type=='product' ]{
+  const products = await client.fetch(`*[_type=='product' ]{
     lDress->{ 
       "eyeIconUrl": eyeIcon.asset->url,
       "cartIconUrl": cartIcon.asset->url,
