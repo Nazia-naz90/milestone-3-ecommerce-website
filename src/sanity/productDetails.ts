@@ -5,7 +5,11 @@ export const productdetails = defineType({
   type: "document",
   title: "lDress",
   fields: [
-   
+    defineField({
+      name: "description",
+      type: "string",
+      title: "Description",
+    }),
     
     defineField({
       name: "button",

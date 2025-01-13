@@ -10,9 +10,6 @@ export const product = defineType({
       name: 'image',
       title: 'Image',
       type: 'image',
-      options: {
-        hotspot: true,
-      },
     }),
     defineField({
       name: 'name',
@@ -46,6 +43,11 @@ export const product = defineType({
        type: 'array', 
        of: [{ type: 'string' }], 
       }),
+       defineField({
+        name:'id',
+        type:'string',
+        title:'Id'
+       }),
         defineField({ name: 'lDress',
            title: 'Ladies Dress', 
            type: 'reference', 

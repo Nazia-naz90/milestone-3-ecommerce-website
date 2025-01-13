@@ -1,13 +1,15 @@
 import Image from 'next/image';
-import { urlForImage } from '@/sanity/lib/image';
+import Link from 'next/link';
+
 
  interface Product {
   imageUrl: string;
-  title: string;
+  name:string;
   department: string;
   originalPrice: string;
   discountPrice: string;
   colors: string[];
+  id:string;
   description: string;
 }
 
@@ -16,24 +18,28 @@ export  interface ProductCardProps {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+  console.log(product)
   return (
-    <div className="flex flex-col items-center p-4 mt-6 rounded-lg transition-all transform hover:scale-105 hover:shadow-lg">
+<>
+<div className="flex flex-col items-center p-4 mt-6 rounded-lg 
+transition-all transform hover:scale-105 hover:shadow-lg">
       <div>
         {/* FEATURED IMAGE */}
          
                 <Image
                   src={product.imageUrl}
-                  width={500}
+                  width={350}
                   height={500}
-                  alt={product.title}
-                  className="rounded"
+                  alt="image"
+                  className="rounded-md shadow-lg w-[350px] h-[500px] "
                 />
             
       </div>
       <div className="mt-4 text-center">
-        <h3 className="text-[#252B42] text-[16px] font-bold">
-          {product.title}
-        </h3>
+      <h1 className="text-[17px] text-yellow-600 sm:text-[20px] 
+      font-semibold">
+    {product.name}
+  </h1> 
         <p className="text-[#737373] text-[14px]">
           {product.department}
         </p>
@@ -50,8 +56,18 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             style={{ backgroundColor: color }} />
           ))}
         </div>
+        <div>
+          <Link href={`/prouctItems/${product.id}`}>
+          <button className='w-[150px] bg-green-200 text-green-700
+          text-{17px} font-bold h-[45px] p-2 rounded-lg mt-4'>
+            View Details
+          </button>
+          </Link>
+          
+        </div>
       </div>
     </div>
+</>
   );
 };
 
